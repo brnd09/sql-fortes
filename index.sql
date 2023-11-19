@@ -49,9 +49,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `projeto_fortes`.`endereço`
+-- Table `projeto_fortes`.`endereco`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `projeto_fortes`.`endereço` (
+CREATE TABLE IF NOT EXISTS `projeto_fortes`.`endereco` (
   `cep` INT(8) NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
@@ -68,14 +68,14 @@ CREATE TABLE IF NOT EXISTS `projeto_fortes`.`fornecedor` (
   `cnpj` INT(18) NOT NULL,
   `razao_social` VARCHAR(45) NOT NULL,
   `fornecedorcol` VARCHAR(45) NULL,
-  `id_endereço` INT NOT NULL,
-  PRIMARY KEY (`cnpj`, `id_endereço`),
+  `id_endereco` INT NOT NULL,
+  PRIMARY KEY (`cnpj`, `id_endereco`),
   UNIQUE INDEX `idfornecedor_UNIQUE` (`cnpj` ASC) VISIBLE,
   UNIQUE INDEX `razao_social_UNIQUE` (`razao_social` ASC) VISIBLE,
-  INDEX `fk_fornecedor_endereço1_idx` (`id_endereço` ASC) VISIBLE,
-  CONSTRAINT `fk_fornecedor_endereço1`
-    FOREIGN KEY (`id_endereço`)
-    REFERENCES `projeto_fortes`.`endereço` (`cep`)
+  INDEX `fk_fornecedor_endereco1_idx` (`id_endereco` ASC) VISIBLE,
+  CONSTRAINT `fk_fornecedor_endereco1`
+    FOREIGN KEY (`id_endereco`)
+    REFERENCES `projeto_fortes`.`endereco` (`cep`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
